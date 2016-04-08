@@ -35,25 +35,17 @@ myApp.service('nameService', function() {
 
 myApp.controller('mainController', ['$scope', '$log', 'nameService', function($scope, $log, nameService) {
 
-    $scope.name = nameService.name;
-
-    $scope.$watch('name', function() {
-    	nameService.name = $scope.name;
-    })
-
-    $log.log(nameService.name);
-    $log.log(nameService.namelength());
     
 }]);
 
 myApp.controller('secondController', ['$scope', '$log', '$routeParams', 'nameService', function($scope, $log, $routeParams, nameService) {
-    
-    $scope.num = $routeParams.num || 1;
 
-    $scope.name = nameService.name;
-
-    $scope.$watch('name', function() {
-    	nameService.name = $scope.name;
-    })
     
 }]);
+
+myApp.directive("searchResult", function() {
+	return {
+		template: '<a href="#" class="list-group-item"><h4 class="list-group-item-heading">Doe, John</h4><p class="list-group-item-text">555 Main St., NY</p></a>',
+		replace: true
+	}
+});
