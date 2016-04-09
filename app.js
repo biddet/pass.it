@@ -35,6 +35,11 @@ myApp.service('nameService', function() {
 
 myApp.controller('mainController', ['$scope', '$log', 'nameService', function($scope, $log, nameService) {
 
+	$scope.person = {
+		name: 'John Doe',
+		address: '555 Main St., NY'
+	}
+
     
 }]);
 
@@ -45,7 +50,11 @@ myApp.controller('secondController', ['$scope', '$log', '$routeParams', 'nameSer
 
 myApp.directive("searchResult", function() {
 	return {
-		template: '<a href="#" class="list-group-item"><h4 class="list-group-item-heading">Doe, John</h4><p class="list-group-item-text">555 Main St., NY</p></a>',
-		replace: true
+		templateUrl: 'directives/searchresult.html',
+		replace: true,
+		scope: {
+			//local text binding, @ = text, = = object
+			personObject: "="
+		}
 	}
 });
