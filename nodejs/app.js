@@ -1,14 +1,23 @@
-const http = require('http')
+var greet = require('./greet.js'); //.js extension isn't required
 
-const hostname = '127.0.0.1'
-const port = 3000
+var person = {
+	firstname: 'John',
+	lastname: 'Doe',
+	greet: function() {
+		console.log('Hello, ' + this.firstname + ' ' + this.lastname);
+	}
+};
 
-const server = http.createServer((req, res) => {
-  res.statusCode = 200
-  res.setHeader('Content-Type', 'text/plain')
-  res.end('Hello World\n')
-})
+function Person(firstname, lastname) {
+	this.firstname = firstname;
+	this.lastname = lastname;
+}
 
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`)
-})
+Person.prototype.greet = function() {
+	console.log('Hello, ' + this.firstname + ' ' + this.lastname);
+};
+
+var john = new Person('John', 'Doe');
+john.greet();
+
+console.log(john.__proto__);//do not keep

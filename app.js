@@ -49,11 +49,11 @@ myApp.controller('mainController', ['$scope', '$log', 'nameService', function($s
 		name: 'Bob Doe',
 		address: '123 Main St.',
 		state: 'TX'
-	}]
+	}];
 
 	$scope.formattedAddress = function(person) {
 		return person.address + ', ' + person.state;
-	}
+	};
 
     
 }]);
@@ -71,6 +71,24 @@ myApp.directive("searchResult", function() {
 			//local text binding, @ = text, = = object, & = function
 			personObject: "=",
 			formattedAddressFunction: "&"
+		},
+		compile: function(elem, attrs) {
+
+			console.log('Compiling...');
+			//elem.removeAttr('class');
+			console.log(elem);
+
+			return {
+				post: function(scope, elements, attrs) {
+					console.log('Post-linking...');
+					console.log(scope);
+					//if (scope.personObject.name == 'Jane Doe'){
+					//	elements.removeAttr('class');
+					//}
+					console.log(elements);
+				}
+			}
+
 		}
 	}
 });
