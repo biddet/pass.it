@@ -13,3 +13,6 @@ pass.it will utalize node.js and Angular JS. Node.js packages used will include 
  - Fuzzy student search algorithm
  - Email server to send out passes
  - Current teacher classes built based on current time and bell schedule
+
+## Possible Technologies
+ - List.js for fuzzy search: http://www.listjs.com/examples/fuzzy-search
